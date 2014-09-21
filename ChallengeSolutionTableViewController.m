@@ -34,24 +34,49 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    if (section == 0){
+        return 2;
+    }
+    else if (section == 1) {
+        return 1;
+    }
+    else {
+        return 3;
+    }
+
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIndentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIndentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    if (indexPath.section == 0) {
+        cell.backgroundColor = [UIColor redColor];
+        cell.textLabel.text = @"I'm in Section 1";
+    }
+    else if (indexPath.section == 1) {
+        cell.backgroundColor = [UIColor greenColor];
+        cell.textLabel.text =  @"2 ...";
+    }
+    else{
+        cell.backgroundColor = [UIColor yellowColor];
+        cell.textLabel.text = [NSString stringWithFormat:@"Section 3, row %li", (long)indexPath.row];
+    }
+    
+    //Cell input
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
